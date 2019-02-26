@@ -25,7 +25,7 @@ class MPU_6050:
         high = self.bus.read_byte_data(self.sensor_address, address)
         low = self.bus.read_byte_data(self.sensor_address, address + 1)
         value = (high << 8) + low
-        if (value >= 0x8000):
+        if value >= 0x8000:
             return -((65535 - value) + 1)
         else:
             return value
